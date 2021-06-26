@@ -1,0 +1,30 @@
+#the docker compose file version
+version: "3.8"
+# you can run multiple services inside one docker compose file
+# define them with their dependencies one after the other
+services:
+  # service 1 named react-prod
+  server:
+    # service 1 container name
+    container_name: nginx
+    build:
+      # the context (working directory) is the current directory
+      # change this to the directory containing the dockerfile if in a different place
+      context: .
+      # the dockerfile to be run
+      dockerfile: Dockerfile
+    volumes:
+      - vol_1:/usr/share/nginx/html/react_error_page
+      - vol_2:/usr/share/nginx/html/react_protofolio_site
+      - ./nginx_config/:/etc/nginx/conf.d/
+      - ./letsencryptFile:/letsencrypt
+      - ./certs:/etc/letsencrypt
+      # - react_vol:/usr/share/nginx/html/project2
+    ports:
+      - "80:80"
+      - "443:443"
+volumes:
+  vol_1:
+    name: ${VOLUME_1}
+  vol_2:
+    name: ${VOLUME_2}
