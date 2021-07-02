@@ -16,6 +16,7 @@ services:
     volumes:
       - vol_1:/usr/share/nginx/html/react_error_page
       - vol_2:/usr/share/nginx/html/react_protofolio_site
+      - vol_3:/usr/share/nginx/html/angular-sql-nodejs
       - ./nginx_config/:/etc/nginx/conf.d/
       - ./letsencryptFile:/letsencrypt
       - ./certs:/etc/letsencrypt
@@ -28,3 +29,7 @@ volumes:
     name: ${VOLUME_1}
   vol_2:
     name: ${VOLUME_2}
+  vol_3:
+    name: ${VOLUME_3}
+
+    # docker-compose -f "docker-compose.yml" up -d --build
