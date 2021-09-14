@@ -17,6 +17,7 @@ services:
       - vol_1:/usr/share/nginx/html/react_error_page
       - vol_2:/usr/share/nginx/html/react_protofolio_site
       - vol_3:/usr/share/nginx/html/angular-sql-nodejs
+      - vol_4:/usr/share/nginx/html/personal_desktop
       - ./nginx_config/:/etc/nginx/conf.d/
       - ./letsencryptFile:/letsencrypt
       - ./certs:/etc/letsencrypt
@@ -24,6 +25,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+      - "100:100"
+    restart: always
 volumes:
   vol_1:
     name: ${VOLUME_1}
@@ -31,5 +34,7 @@ volumes:
     name: ${VOLUME_2}
   vol_3:
     name: ${VOLUME_3}
+  vol_4:
+    name: ${VOLUME_4}
 
     # docker-compose -f "docker-compose.yml" up -d --build
